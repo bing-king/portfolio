@@ -183,3 +183,12 @@ links.forEach(link => link.addEventListener("click", () => {
     document.body.classList.remove("open");
     document.body.classList.remove("stopScrolling");
 }))
+
+
+/* --- screen zoomout --- */
+window.addEventListener('DOMContentLoaded', initializeZoom);
+
+function initializeZoom() {
+    const zoomPercentage = 100;
+    document.body.style.setProperty('--zoom-level', `${zoomPercentage}%`);
+}
