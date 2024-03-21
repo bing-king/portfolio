@@ -9,7 +9,7 @@ const prev_btn = document.querySelector(".prev-btn");
 const next_btn = document.querySelector(".next-btn");
 const links = document.querySelectorAll(".nav-link");
 const toogle_btn = document.querySelector(".toogle-btn");
-const hamburger = document.querySelector(".hamburger");
+const hamburger = document.querySelector("#hamburger-icon");
 
 /* ---sticky Navbar--- */
 
