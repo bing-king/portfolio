@@ -186,9 +186,10 @@ links.forEach(link => link.addEventListener("click", () => {
 
 
 /* --- screen zoomout --- */
-window.addEventListener('DOMContentLoaded', initializeZoom);
+document.addEventListener('DOMContentLoaded', function () {
+    zoomOut();
+});
 
-function initializeZoom() {
-    const zoomPercentage = 100;
-    document.body.style.setProperty('--zoom-level', `${zoomPercentage}%`);
-}
+function zoomOut() {
+    // Adjust the zoom level as needed
+    document.body.style.zoom = "50%";
