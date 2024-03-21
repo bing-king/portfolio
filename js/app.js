@@ -10,47 +10,35 @@ const next_btn = document.querySelector(".next-btn");
 const links = document.querySelectorAll(".nav-link");
 const toogle_btn = document.querySelector(".toogle-btn");
 const hamburger = document.querySelector(".hamburger");
--
-    /* ---sticky Navbar--- */
-    +
-    -
-    function stickyNavbar() {
-        header.classList.toggle('scorlled', window.scrollY > 0);
+
+/* ---sticky Navbar--- */
+
+function stickyNavbar() {
+    header.classList.toggle('scorlled', window.scrollY > 0);
+}
+
+window.addEventListener('scroll', () => {
+    activeLink();
+    stickyNavbar();
+    if (!mlPlayed) mlCounters();
+});
+
+
+function updateCount(num, maxNum) {
+    let currentNum = +num.innerText;
+    if (currentNum < maxNum) {
+        num.innerText = currentNum + 1;
+        setTimeout(() => {
+            updateCount(num, maxNum)
+        }, 12);
     }
-    +
-    -
-    window.addEventListener('scroll', () => {
-        activeLink();
-        stickyNavbar();
-        if (!mlPlayed) mlCounters();
-    });
-+document.addEventListener('touchmove', (e) => {
-    +    e.preventDefault();
-    +}, {
-    +});
-+window.addEventListener('touchstart', () => {
-    +    activeLink();
-    +    stickyNavbar();
-    +    if (!mlPlayed) mlCounters();
-    +});
+}
+/* ---sticky Navbar--- */
 
-
--function updateCount(num, maxNum) {
-    -    let currentNum = +num.innerText;
-    -    if (currentNum < maxNum) {
-        -        num.innerText = currentNum + 1;
-        -        setTimeout(() => {
-            -            updateCount(num, maxNum)
-                -        }, 12);
-        -    }
-    -}
-    /* ---sticky Navbar--- */
-    +
-    -
-    let sr = ScrollReveal({
-        duration: 2500,
-        distance: '60px'
-    });
+let sr = ScrollReveal({
+    duration: 2500,
+    distance: '60px'
+});
 
 sr.reveal('.showcase-info', { delay: 600 });
 sr.reveal('.showcase-image', { origin: "top", delay: 700 });
@@ -58,13 +46,13 @@ sr.reveal('.showcase-image', { origin: "top", delay: 700 });
 /* ---services Animation---  */
 
 let mlPlayed = false;
--
-    function hasReached(el) {
-        let topPosition = el.getBoundingClientRect().top;
 
-        if (window.innerHeight >= topPosition + el.offsetHeight) return true;
-        return false;
-    }
+function hasReached(el) {
+    let topPosition = el.getBoundingClientRect().top;
+
+    if (window.innerHeight >= topPosition + el.offsetHeight) return true;
+    return false;
+}
 
 function mlCounters() {
     if (!hasReached(ml_section)) return;
@@ -134,74 +122,85 @@ function changeImage(index) {
 document.addEventListener('DOMContentLoaded', () => {
     const swiper = new Swiper('.swiper', {
         loop: true,
-        - speed: 1000,
-        -        autoplay: {
+        speed: 1000,
+        autoplay: {
             delay: 3000,
-        -        },
-    -        pagination: {
-        el: '.swiper-pagination',
-    - clickable: true,
-    -        }
-    -    });
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        }
+    });
 });
 
--/* ---change active link on scroll---  */
-    -function activeLink() {
-        -    let sections = document.querySelectorAll('section[id]');
-        -    let passedSections = Array.from(sections)
-            -        .map((sct, i) => {
-                -            return {
-                    y: sct.getBoundingClientRect().top - header.offsetHeight,
-                    - id: i,
-                    -            };
-        -        }).filter(sct => sct.y <= 0);
+/* ---change active link on scroll---  */
+function activeLink() {
+    let sections = document.querySelectorAll('section[id]');
+    let passedSections = Array.from(sections)
+        .map((sct, i) => {
+            return {
+                y: sct.getBoundingClientRect().top - header.offsetHeight,
+                id: i,
+            };
+        }).filter(sct => sct.y <= 0);
 
--    let currSectionId = passedSections.at(-1).id;
-links.forEach(l => l.classList.remove('active'));
-links[currSectionId].classList.add('active');
+    let currSectionId = passedSections.at(-1).id;
+    links.forEach(l => l.classList.remove('active'));
+    links[currSectionId].classList.add('active');
 }
 
--activeLink()
-    -
-    -/* ---change page theme---  */
-    -function changeTheme() {
-        -    const body = document.body;
-        -    const hasDarkClass = body.classList.contains("dark");
-        -    const oldClass = hasDarkClass ? "fa-moon" : "fa-sun";
-        -    const newClass = hasDarkClass ? "fa-sun" : "fa-moon";
-        -
-            -    body.classList.toggle("dark");
-        -    toogle_btn.classList.replace(oldClass, newClass);
-        -
-            -    localStorage.setItem("theme", body.classList.contains("dark"));
-        -}
-    -
-    -toogle_btn.addEventListener("click", changeTheme);
+activeLink()
 
--document.addEventListener("DOMContentLoaded", () => {
-    -    const isDark = localStorage.getItem("theme") === "true";
-    -    document.body.classList.toggle("dark", isDark);
-    -    toogle_btn.classList.replace(isDark ? "fa-sun" : "fa-moon", isDark ? "fa-moon" : "fa-sun");
-    -});
+/* ---change page theme---  */
+function changeTheme() {
+    const body = document.body;
+    const hasDarkClass = body.classList.contains("dark");
+    const oldClass = hasDarkClass ? "fa-moon" : "fa-sun";
+    const newClass = hasDarkClass ? "fa-sun" : "fa-moon";
 
--/* --- open and close navbar--- */
-    -
-    -hamburger.addEventListener("click", () => {
-        -    document.body.classList.toggle("open");
-        -    document.body.classList.toggle("stopScrolling");
-        -});
+    body.classList.toggle("dark");
+    toogle_btn.classList.replace(oldClass, newClass);
 
--links.forEach(link => link.addEventListener("click", () => {
-    -    document.body.classList.remove("open");
-    -    document.body.classList.remove("stopScrolling");
-    -}))
-    -
-    -
-    -/* --- screen zoomout --- */
-    -document.addEventListener('DOMContentLoaded', function () {
-        -    zoomOut();
-        -});
+    localStorage.setItem("theme", body.classList.contains("dark"));
+}
 
--function zoomOut() {
-    -    // Adjust the zoom level as needed
-        -    document.body.style.zoom = "50%";
+toogle_btn.addEventListener("click", changeTheme);
+
+document.addEventListener("DOMContentLoaded", () => {
+    const isDark = localStorage.getItem("theme") === "true";
+    document.body.classList.toggle("dark", isDark);
+    toogle_btn.classList.replace(isDark ? "fa-sun" : "fa-moon", isDark ? "fa-moon" : "fa-sun");
+});
+
+/* --- open and close navbar--- */
+
+hamburger.addEventListener("click", (event) => {
+    const link = event.target;
+    if (link && link.tagName === "A") {
+        document.body.classList.remove("open");
+        document.body.classList.remove("stopScrolling");
+    }
+});
+
+hamburger.addEventListener("touchstart", (event) => {
+    const link = event.target;
+    if (link && link.tagName === "A") {
+        document.body.classList.remove("open");
+        document.body.classList.remove("stopScrolling");
+    }
+});
+
+hamburger.addEventListener("click", () => {
+    document.body.classList.toggle("open");
+    document.body.classList.toggle("stopScrolling");
+});
+
+/* --- screen zoomout --- */
+document.addEventListener('DOMContentLoaded', function () {
+    if (window.innerWidth < 768) zoomOut();
+});
+
+function zoomOut() {
+    // Adjust the zoom level as needed
+    document.body.style.zoom = "50%";
+}
