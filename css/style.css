@@ -1619,11 +1619,15 @@ footer .social-media{
 /*---------500px Responsive----------- */
 
 @media screen and (max-width: 500px){
-
+    html{
+        width: fit-content
+    }
     .container{
         padding: 0 1.5rem;
     }
-
+    .text{
+        line-height: 1.6;
+    }
      .square{
         display: none;
     }
@@ -1637,11 +1641,19 @@ footer .social-media{
         display: none;
     }
     .person{
-        display: none;
+        max-width: 300px;
     }
-
+    .cta .btn{
+        width: 140px;
+    }
+    .btn.secondary-btn{
+        width: fit-content;
+    }
     section{
         padding: 0;
+    }
+    .section-background{
+        width: 100%;
     }
     .sub-heading{
         font-size: 0.9rem;
@@ -1651,9 +1663,6 @@ footer .social-media{
         font-size: 1.5rem;
     }
 
-    .showcase-image{
-        display: none;
-    }
     .showcase-area{
         padding: 100px 0 0;
     }
@@ -1666,8 +1675,11 @@ footer .social-media{
     }
     
     .skills-boxs{
-        grid-template-rows: repeat(2, 1fr);
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+        row-gap: 20px;
+    }
+    .skills-boxs .box{
+        margin: 2rem 0;
     }
     .skills-boxs .box:hover{
         transform: none;
@@ -1739,6 +1751,7 @@ footer .social-media{
         padding-left: 0;
     }
 
+
     .contact-form p{
         font-size: 1.2rem;
     }
@@ -1775,5 +1788,12 @@ footer .social-media{
         flex-basis: 100%; /* 100% width */
         text-align: center;
         margin-top: 1rem;
+    }
+    .container {
+        position: relative;
+        width: fit-content%;
+        max-width: 75rem;
+        padding: 0;
+        margin: 0 auto;
     }
 }
