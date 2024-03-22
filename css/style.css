@@ -1803,3 +1803,10 @@ footer .social-media{
         margin: 0 auto;
     }
 }
+
+@media screen and (max-width: 384px){
+    .portfolio.open .modal{
+        width: 100%;
+        height: 100%;
+    }
+}
