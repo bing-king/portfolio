@@ -1793,7 +1793,7 @@ footer .social-media{
     }
     .container {
         position: relative;
-        width: fit-content%;
+        width: fit-content;
         max-width: 75rem;
         padding: 0;
         margin: 0 auto;
