@@ -194,13 +194,3 @@ hamburger.addEventListener("click", () => {
     document.body.classList.toggle("open");
     document.body.classList.toggle("stopScrolling");
 });
-
-/* --- screen zoomout --- */
-document.addEventListener('DOMContentLoaded', function () {
-    if (window.innerWidth < 768) zoomOut();
-});
-
-function zoomOut() {
-    // Adjust the zoom level as needed
-    document.body.style.zoom = "100%";
-}
