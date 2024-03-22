@@ -202,5 +202,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function zoomOut() {
     // Adjust the zoom level as needed
-    document.body.style.zoom = "50%";
+    document.body.style.zoom = "100%";
 }
