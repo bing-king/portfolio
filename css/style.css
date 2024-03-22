@@ -108,6 +108,7 @@ img {
     max-width: 75rem;
     padding: 0, 1.5rem;
     margin: 0 auto;
+    min-width: 384px;
 }
 
 .logo {
@@ -930,6 +931,8 @@ body.open .hamburger .bar:last-child {
 
 .portfolio.open .modal{
     pointer-events: auto;
+        width: 100%;
+        height: 100%;
 }
 .portfolio.open .modal-overlay{
     opacity: 1;
@@ -1309,6 +1312,7 @@ footer .social-media{
     .filter-btn{
         font-size: 0.8rem;
     }
+    
 }
 
 /*---------768px Responsive----------- */
