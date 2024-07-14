@@ -41,7 +41,7 @@ let sr = ScrollReveal({
 });
 
 sr.reveal('.showcase-info', { delay: 600 });
-sr.reveal('.showcase-image', { origin: "top", delay: 700 });
+sr.reveal('.card-container', { origin: "top", delay: 700 });
 
 /* ---services Animation---  */
 
@@ -119,8 +119,10 @@ function changeImage(index) {
 
 /* ---swiper---  */
 
+/* ---swiper for testimonials---  */
 document.addEventListener('DOMContentLoaded', () => {
     const swiper = new Swiper('.swiper', {
+        spaceBetween: 10,
         loop: true,
         speed: 1000,
         autoplay: {
@@ -129,6 +131,41 @@ document.addEventListener('DOMContentLoaded', () => {
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
+        }
+
+    });
+});
+
+/* ---swiper for skills---  */
+document.addEventListener('DOMContentLoaded', () => {
+    const swiper = new Swiper('.swiper-skills', {
+        spaceBetween: 10,
+        loop: true,
+        speed: 1500,
+        autoplay: {
+            delay: 1000,
+        },
+        breakpoints: {
+            500: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+            },
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+            },
+            1280: {
+                slidesPerView: 5,
+                spaceBetween: 50,
+            },
         }
     });
 });
